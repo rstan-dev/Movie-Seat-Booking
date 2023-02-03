@@ -1,7 +1,13 @@
 /* Standard setup for most projects  */
 
+* {
+    box-sizing: border-box;
+    /* removes any extra width - allows for accurate padding */
+}
+
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: #242333;
+    color: white;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     display: flex;
@@ -13,6 +19,31 @@ body {
     justify-content: center;
     height: 100vh;
     /* takes up 100% of the viewport height  */
-    overflow: hidden;
-    /* prevents scroll bard from showing by default  */
+}
+
+.movie-container {
+    margin: 20px 0;
+}
+
+.movie-container select {
+    background-color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 5px 15px 5px 15px;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* the appearance allows for padding on non-windows machines  */
+}
+
+.seat {
+    background-color: #444451;
+    height: 12px;
+    width: 15px;
+    margin: 3px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
