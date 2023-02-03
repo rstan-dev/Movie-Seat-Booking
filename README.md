@@ -12,5 +12,5 @@
 * 
 
 ## Credits
-* 
+* [Brad Traversy 20 Vanilla Web Projects](https://github.com/rstan-dev/vanillawebprojects)
 

@@ -39,11 +39,104 @@ body {
     /* the appearance allows for padding on non-windows machines  */
 }
 
+.container {
+    perspective: 1000px;
+    /* makes the screen box look 3 d  */
+    margin-bottom: 30px;
+    /* creates more space between the text below */
+}
+
 .seat {
-    background-color: #444451;
+    background-color: rgb(175, 172, 172);
+    color: transparent;
+    /* to use with seat numbers ?*/
     height: 12px;
     width: 15px;
     margin: 3px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+}
+
+.seat.selected {
+    background-color: #6feaf6;
+}
+
+.seat.occupied {
+    background-color: red;
+}
+
+.seat:nth-of-type(2) {
+    margin-right: 18px;
+}
+
+/* creates a gap in between the seat divs */
+
+.seat:nth-of-type(6) {
+    margin-right: 18px;
+}
+
+
+.seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    color: white;
+    /* to use with seat numbers ?*/
+    font-size: 10px;
+    /* to use with seat numbers ?*/
+
+}
+
+.showcase.seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+    color: white;
+    /* to use with seat numbers ?*/
+    font-size: 10px;
+    /* to use with seat numbers ?*/
+
+    /* removes the scaling on the showcase legend */
+}
+
+.showcase {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    color: #777;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.showcase li {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.showcase li smalll {
+    margin-left: 2px;
+}
+
+
+.row {
+    display: flex;
+    /* positions each div in a row */
+}
+
+.screen {
+    background-color: white;
+    height: 50px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotateX(-45deg);
+    /* makes it thinner ?  so does adjusting the height? */
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+    /* gives a glow effect around the screen  */
+}
+
+p.text {
+    margin: 5px 0;
+}
+
+p.text span {
+    color: #6feaf6;
 }
