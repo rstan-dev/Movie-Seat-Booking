@@ -16,16 +16,31 @@ let ticketPrice = +movieSelect.value; // gets ticket price string as a number - 
 function updateSelectedCount() {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
+    const seatsIndex = [...selectedSeats].map(function (seat) {
+        return [...seats].indexOf(seat);
+    }); //this function gets the indexed seats from the node list and capturs in an array
+
+    // console.log(seatsIndex);  shows the index of each selected seat working in the console
+
+    localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+    // stores this data in the application window even when browser is refreshed
+
     const selectedSeatsCount = selectedSeats.length;
     // console.log(selectedSeatsCount); - shows the selection count is working in the console
     count.innerText = selectedSeatsCount;
     total.innerText = selectedSeatsCount * ticketPrice
+    // updates the HTML text for count and total to reflect on screen
 
 };
 
 // Saving data into local storage----
-// convert a node list into an array using a spread operator
+//   localStorage.setItem('selectedSeats', JSON.stringify 
+//   (seatsIndex));
 
+// Convert a node list into an array using a spread operator
+//     const seatsIndex = [...selectedSeats].map(function (seat) {
+//     return [...seats].indexOf(seat);
+//      });
 
 
 
@@ -34,12 +49,13 @@ function updateSelectedCount() {
 // Movie select event  (activates a ticket price change)
 movieSelect.addEventListener('change', e => {
     ticketPrice = +e.target.value;
+    console.log(e.target.selectedIndex, e.target.value);
     updateSelectedCount();
 });
 
 
 
-//Seat select clikc event
+//Seat select click event
 
 container.addEventListener('click', e => {
     if (
