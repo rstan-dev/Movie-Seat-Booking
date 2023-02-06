@@ -4,10 +4,21 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
-console.log(seats);
+populateUI();
+
+// console.log(seats);
+
 let ticketPrice = +movieSelect.value; // gets ticket price string as a number - quicker than using parseInt() - use let not const as this ticke price will change
 
 //----Functions Area ----->
+
+// Save selected movie index and price
+function setMovieData(movieIndex, moviePrice) {
+    localStorage.setItem('selectedMovieIndex', movieIndex);
+    localStorage.setItem('selectedMoviePrice', moviePrice);
+}
+// stores this data in the application window as a key: value pair
+
 
 /** Doc String
  * update total count of selected seats 
@@ -33,6 +44,27 @@ function updateSelectedCount() {
 
 };
 
+// Get data fronm local storage and populate UI
+function populateUI() {
+    const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+
+    if (selectedSeats !== null && selectedSeats.length > 0) {
+        seats.forEach((seat, index) => {
+            if (selectedSeats.indexOf(index) > -1) {
+                seat.classList.add('selected');
+            }
+        });
+    }
+
+    const selectedMovieIndex = localStorage.getItem('selectedMovieIndex');
+
+    if (selectedMovieIndex !== null) {
+        movieSelect.selectedIndex = selectedMovieIndex;
+    }
+}
+
+//Notes:  
+
 // Saving data into local storage----
 //   localStorage.setItem('selectedSeats', JSON.stringify 
 //   (seatsIndex));
@@ -49,7 +81,8 @@ function updateSelectedCount() {
 // Movie select event  (activates a ticket price change)
 movieSelect.addEventListener('change', e => {
     ticketPrice = +e.target.value;
-    console.log(e.target.selectedIndex, e.target.value);
+    setMovieData(e.target.selectedIndex, e.target.value);
+    // shows the index number and price of the selected item (movie select dropdown  ??  )
     updateSelectedCount();
 });
 
@@ -68,5 +101,7 @@ container.addEventListener('click', e => {
 
         updateSelectedCount(); //runs this fucntion to udpate the counter
     }
-
 });
+
+// Initial count and total set (from local storage)
+updateSelectedCount();
