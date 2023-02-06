@@ -2,7 +2,7 @@
 
 ## Project Screenshot
 
-<img src="">
+<img src="/workspace/Movie-Seat-Booking/assets/images/final-screen-shot.jpg">
 
 ## Link to Final Site
 * [Link to Deployed Project](<<add_deployed_link_to_project_here>>)
